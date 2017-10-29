@@ -2,10 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { FileDropDirective, FileSelectDirective } from 'ng2-file-upload';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FileDropDirective,
+    FileSelectDirective
   ],
   imports: [
     BrowserModule
