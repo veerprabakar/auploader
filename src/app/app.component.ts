@@ -13,6 +13,18 @@ export class AppComponent {
 
   constructor(public toastr: ToastsManager, vcr: ViewContainerRef) {
     this.toastr.setRootViewContainerRef(vcr);
+
+      //on error:
+      this.uploader.onErrorItem = (item: any, response: string, status: number, headers: any) => {
+        console.log(headers);
+        this.toastr.error(item.file.name, "Failed !", {toastLife: 2000});
+      };
+
+      //on success:
+      this.uploader.onSuccessItem = (item: any, response: string, status: number, headers: any) => {
+        console.log(item);
+        this.toastr.success(item.file.name, "Uploaded !", {toastLife: 2000});
+      };
   }
 
   title = 'app';
@@ -37,9 +49,9 @@ export class AppComponent {
     this.hasAnotherDropZoneOver = e;
   }
 
-  showSuccess() {
-    this.toastr.success('You are awesome!', 'Success!');
-  }
 
-  //this.toastr.sucess('This toast will dismiss in 10 seconds.', null, {toastLife: 10000});
+
+  showSuccess() {
+    this.toastr.warning('You are awesome!', 'Success!', {toastLife: 2000});
+  }
 }
