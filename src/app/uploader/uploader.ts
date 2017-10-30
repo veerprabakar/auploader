@@ -6,10 +6,10 @@ import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  templateUrl: './uploader.html',
+  styleUrls: ['./uploader.css']
 })
-export class AppComponent {
+export class AppUploader {
 
   constructor(public toastr: ToastsManager, vcr: ViewContainerRef) {
     this.toastr.setRootViewContainerRef(vcr);

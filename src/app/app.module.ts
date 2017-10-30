@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppComponent } from './app.component';
+import { AppUploader } from './uploader/uploader';
 import { FileDropDirective, FileSelectDirective } from 'ng2-file-upload';
 
 // Material and animation :
@@ -14,7 +14,7 @@ import { ToastOptions } from 'ng2-toastr/src/toast-options';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppUploader,
     FileDropDirective,
     FileSelectDirective
   ],
@@ -27,6 +27,6 @@ import { ToastOptions } from 'ng2-toastr/src/toast-options';
   ],
   providers: [
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppUploader]
 })
 export class AppModule { }
