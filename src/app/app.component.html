@@ -26,7 +26,7 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th width="50%">Name</th>
+                        <th>Name</th>
                         <th>Size</th>
                         <th>Progress</th>
                         <th>Status</th>
@@ -83,8 +83,6 @@
                 <button mat-raised-button color="warn" type="button" (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
                                 <span class="glyphicon glyphicon-trash"></span> Remove all
                             </button>
-
-                <button mat-raised-button (click)="showSuccess()">Show the toasty !</button>
             </p>
         </div>
     </div>

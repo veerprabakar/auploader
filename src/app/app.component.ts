@@ -17,13 +17,13 @@ export class AppComponent {
       //on error:
       this.uploader.onErrorItem = (item: any, response: string, status: number, headers: any) => {
         console.log(headers);
-        this.toastr.error(item.file.name, "Failed !", {toastLife: 2000});
+        this.toastr.error(item.file.name, "Upload Failed !", {toastLife: 2000});
       };
 
       //on success:
       this.uploader.onSuccessItem = (item: any, response: string, status: number, headers: any) => {
         console.log(item);
-        this.toastr.success(item.file.name, "Uploaded !", {toastLife: 2000});
+        this.toastr.success(item.file.name, "Upload Success.", {toastLife: 2000});
       };
   }
 
@@ -47,11 +47,5 @@ export class AppComponent {
 
   public fileOverAnother(e: any): void {
     this.hasAnotherDropZoneOver = e;
-  }
-
-
-
-  showSuccess() {
-    this.toastr.warning('You are awesome!', 'Success!', {toastLife: 2000});
   }
 }
