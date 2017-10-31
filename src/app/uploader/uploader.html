@@ -19,6 +19,31 @@
             </div>
         </div>
     </div>
+
+    <div [hidden]="!uploader.queue.length" class="card mat-elevation-z3">
+        <div class="card-header">
+            Overall queue progress:
+        </div>
+        <div class="card-block">
+            <div class="progress">
+                <div color="warn" class="progress-bar" role="progress" [ngStyle]="{ 'width': uploader.progress + '%' }">
+                </div>
+            </div>
+            <p></p>
+            <p>
+                <button mat-raised-button color="primary" type="button" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+                              <span class="glyphicon glyphicon-upload"></span> Upload all
+                          </button>
+                <button mat-raised-button color="accent" type="button" (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
+                              <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
+                          </button>
+                <button mat-raised-button color="warn" type="button" (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
+                              <span class="glyphicon glyphicon-trash"></span> Remove all
+                          </button>
+            </p>
+        </div>
+    </div>
+
     <div class="card mat-elevation-z3">
         <div class="card-header">Upload queue - ( Queue length: {{ uploader?.queue?.length }} )
         </div>
@@ -63,27 +88,5 @@
             </table>
         </div>
     </div>
-    <div class="card mat-elevation-z3">
-        <div class="card-header">
-            Overall queue progress:
-        </div>
-        <div class="card-block">
-            <div class="progress">
-                <div color="warn" class="progress-bar" role="progress" [ngStyle]="{ 'width': uploader.progress + '%' }">
-                </div>
-            </div>
-            <p></p>
-            <p>
-                <button mat-raised-button color="primary" type="button" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
-                                <span class="glyphicon glyphicon-upload"></span> Upload all
-                            </button>
-                <button mat-raised-button color="accent" type="button" (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
-                                <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
-                            </button>
-                <button mat-raised-button color="warn" type="button" (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
-                                <span class="glyphicon glyphicon-trash"></span> Remove all
-                            </button>
-            </p>
-        </div>
-    </div>
+
 </div>

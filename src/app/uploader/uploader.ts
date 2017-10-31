@@ -2,7 +2,7 @@ import { Component, ElementRef, Renderer, Input, HostListener, HostBinding, OnIn
 import { FileUploader, FileUploaderOptions, FileSelectDirective } from 'ng2-file-upload';
 
 import { MatButtonModule } from '@angular/material';
-import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { ToastsManager, ToastOptions } from 'ng2-toastr/ng2-toastr';
 
 @Component({
   selector: 'app-root',
@@ -10,34 +10,26 @@ import { ToastsManager } from 'ng2-toastr/ng2-toastr';
   styleUrls: ['./uploader.css']
 })
 export class AppUploader {
+  toastTime: any = 1000;
+  title = 'app';
+  public uploader =  new FileUploader({url: 'http://localhost:56155/api/UploadFile',method: 'POST'});
 
   constructor(public toastr: ToastsManager, vcr: ViewContainerRef) {
     this.toastr.setRootViewContainerRef(vcr);
 
-      //on error:
+      // on error:
       this.uploader.onErrorItem = (item: any, response: string, status: number, headers: any) => {
         console.log(headers);
-        this.toastr.error(item.file.name, "Upload Failed !", {toastLife: 2000});
+        this.toastr.error(item.file.name, 'Upload Failed !', this.GetToastOptions());
       };
 
-      //on success:
+      // on success:
       this.uploader.onSuccessItem = (item: any, response: string, status: number, headers: any) => {
         console.log(item);
-        this.toastr.success(item.file.name, "Upload Success.", {toastLife: 2000});
+        this.toastr.success(item.file.name, 'Upload Success.', this.GetToastOptions() );
       };
   }
 
-  title = 'app';
-  public uploader =  new FileUploader(
-    {
-      url: 'http://localhost:56155/api/UploadFile',
-      method: 'POST'
-      //,
-      // headers: [{
-      //   name: 'Access-Control-Allow-Origin',
-      //   value: 'http://localhost:56155/'}]
-    }
-  );
   public hasBaseDropZoneOver = false;
   public hasAnotherDropZoneOver = false;
 
@@ -47,5 +39,16 @@ export class AppUploader {
 
   public fileOverAnother(e: any): void {
     this.hasAnotherDropZoneOver = e;
+  }
+
+  // global options for toast
+  public GetToastOptions(): any {
+      return ({
+        toastLife: this.toastTime,
+        showCloseButton: true,
+        positionClass: 'toast-bottom-right',
+        animate: 'flyRight',
+        enableHTML: true
+      });
   }
 }

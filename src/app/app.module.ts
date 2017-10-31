@@ -9,8 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatProgressBarModule } from '@angular/material';
 
 // Toasty :
-import { ToastModule } from 'ng2-toastr/ng2-toastr';
-import { ToastOptions } from 'ng2-toastr/src/toast-options';
+import { ToastModule, ToastOptions } from 'ng2-toastr/ng2-toastr';
 
 @NgModule({
   declarations: [
