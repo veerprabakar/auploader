@@ -10,9 +10,9 @@ import { ToastsManager, ToastOptions } from 'ng2-toastr/ng2-toastr';
   styleUrls: ['./uploader.css']
 })
 export class AppUploader {
-  toastTime: any = 1000;
+  toastTime: any = 2500;
   title = 'app';
-  public uploader =  new FileUploader({url: 'http://localhost:56155/api/UploadFile',method: 'POST'});
+  public uploader =  new FileUploader({url: 'http://localhost:56155/api/UploadFileToS3', method: 'POST'});
 
   constructor(public toastr: ToastsManager, vcr: ViewContainerRef) {
     this.toastr.setRootViewContainerRef(vcr);
