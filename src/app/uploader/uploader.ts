@@ -26,7 +26,7 @@ export class AppUploader {
       // on success:
       this.uploader.onSuccessItem = (item: any, response: string, status: number, headers: any) => {
         console.log(item);
-        this.toastr.success(item.file.name, 'Upload Success.', this.GetToastOptions() );
+        this.toastr.success( item.file.name + ' Uploaded Successfully.', 'Upload Success.', this.GetToastOptions() );
       };
   }
 
